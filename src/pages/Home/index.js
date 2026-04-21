@@ -1,16 +1,18 @@
 import { useState } from "react"
-import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity, SafeAreaViewBase } from "react-native"
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
 import { Feather } from '@expo/vector-icons'
+import Product from "../../components/Product"
 
 export default function Home(){
     const [products, setProducts] = useState([
         
-        { id: 1, nome: "Arroz 5kg", preco: 24.90 },
-        { id: 2, nome: "Feijão 1kg", preco: 7.50 },
-        { id: 3, nome: "Óleo de Soja 900ml", preco: 6.90 },
-        { id: 4, nome: "Leite Integral 1L", preco: 4.80 },
-        { id: 5, nome: "Pão de Forma", preco: 8.99 },
-        { id: 6, nome: "Açúcar 1kg", preco: 4.20 }
+        { id: 1, name: "Arroz 5kg", preco: 24.90 },
+        { id: 2, name: "Feijão 1kg", preco: 7.50 },
+        { id: 3, name: "Óleo de Soja 900ml", preco: 6.90 },
+        { id: 4, name: "Leite Integral 1L", preco: 4.80 },
+        { id: 5, name: "Pão de Forma", preco: 8.99 },
+        { id: 6, name: "Açúcar 1kg", preco: 4.20 }
 
     ])
     return(
@@ -24,6 +26,12 @@ export default function Home(){
                     <Feather name='shopping-cart' size={30} color='#000'/>
                 </TouchableOpacity>
             </View>
+            <FlatList
+                style={styles.list}
+                data={products}
+                keyExtractor={(item) => String(item.id)}
+                renderItem={({ item }) => <Product data={item}/>}
+            />
         </SafeAreaView>
     )
 }
