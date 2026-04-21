@@ -12,14 +12,15 @@ export default function Routes(){
                 name="Home"
                 component={Home}
                 options={{
-                    headerShown: false
+                    headerShown: false,
+                    title: ''
                 }}
             />
             <Stack.Screen
                 name="Cart"
                 component={Cart}
                 options={{
-                    headerTitle: 'Meu Carrinho'
+                    headerTitle: 'Meu Carrinho',
                 }}
             />
         </Stack.Navigator>
