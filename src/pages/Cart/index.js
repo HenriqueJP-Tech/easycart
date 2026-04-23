@@ -4,7 +4,7 @@ import { CartContext } from "../../contexts/CartContext"
 import CardItem from "../../components/CardItem";
 
 export default function Cart(){
-    const { cart, addItemCart } = useContext(CartContext);
+    const { cart, addItemCart, removeItemCart } = useContext(CartContext);
 
     return(
         <View style={styles.container}>
@@ -12,7 +12,11 @@ export default function Cart(){
                 data={cart}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => String(item.id)}
-                renderItem={({item}) => <CardItem data={item} addAmount={() => addItemCart(item)} />}
+                renderItem={({item}) => 
+                    <CardItem data={item} 
+                    addAmount={() => addItemCart(item)} 
+                    removeAmount={() => removeItemCart(item)}
+                />}
             />
         </View>
     )
