@@ -12,6 +12,7 @@ export default function Cart(){
                 data={cart}
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => String(item.id)}
+                ListEmptyComponent={()=> <Text style={styles.text}>Nenhum item no carrinho...</Text>}
                 renderItem={({item}) => 
                     <CardItem data={item} 
                     addAmount={() => addItemCart(item)} 
@@ -29,5 +30,9 @@ const styles = StyleSheet.create({
         paddingStart: 14,
         paddingEnd: 14,
         paddingTop: 14
+    },
+    text:{
+        fontSize: 16,
+        fontWeight: 'bold',
     }
 })
